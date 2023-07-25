@@ -11,6 +11,11 @@ from PIL import Image
 ############################
 from FaceModel.Facemodel import predict
 ############################
+##########图片分类##########
+from ImageClassificationModel.clf import predict
+############################
+
+
 
 def get_subdirs(b='.'):
     '''
@@ -33,8 +38,7 @@ def get_detection_folder():
 
 # if __name__ == '__main__':
 def myMain():
-
-    st.title('Streamlit App')
+    st.title('✨深度学习模型部署：实现多功能')
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
@@ -74,7 +78,7 @@ def myMain():
     opt = parser.parse_args()
     print(opt)
 
-    source = ("图片检测", "视频检测","人脸对比")
+    source = ("🧩图片检测", "🎈视频检测","⭐人脸对比","✨图片分类")
     source_index = st.sidebar.selectbox("选择输入", range(
         len(source)), format_func=lambda x: source[x])
 
@@ -86,6 +90,7 @@ def myMain():
             with st.spinner(text='资源加载中...'):
                 st.sidebar.image(uploaded_file)
                 picture = Image.open(uploaded_file)
+                picture = picture.convert('RGB')
                 picture = picture.save(f'data/images/{uploaded_file.name}')
                 opt.source = f'data/images/{uploaded_file.name}'
         else:
@@ -118,13 +123,13 @@ def myMain():
 
             if option2 == ["a", 'b']:
                 with col1:
-                    image1 = Image.open(r"D:\lvshaomei\modelDeploy\yolov5-streamlit-main\yolov5-streamlit-main\FaceModel\image\a.jpg")
-                    file_up1 = r"D:\lvshaomei\modelDeploy\yolov5-streamlit-main\yolov5-streamlit-main\FaceModel\image\a.jpg"
+                    image1 = Image.open(r".\FaceModel\image\a.jpg")
+                    file_up1 = r".\FaceModel\image\a.jpg"
                     st.image(image1, caption='Uploaded Image.', use_column_width=True)
 
                 with col2:
-                    image2 = Image.open(r"D:\lvshaomei\modelDeploy\yolov5-streamlit-main\yolov5-streamlit-main\FaceModel\image\b.jpg")
-                    file_up2 = r"D:\lvshaomei\modelDeploy\yolov5-streamlit-main\yolov5-streamlit-main\FaceModel\image\b.jpg"
+                    image2 = Image.open(r".\FaceModel\image\b.jpg")
+                    file_up2 = r".\FaceModel\image\b.jpg"
 
                     st.image(image2, caption='Uploaded Image.', use_column_width=True)
                     st.write("")
@@ -151,6 +156,58 @@ def myMain():
                 st.success('successful prediction')
                 st.write("两张图片是同一个人的概率是Prediction：", probability.item())
                 st.balloons()
+    else:  #######################################图片分类##################################
+        is_valid = False
+        option = st.selectbox(
+            'Choose the model you want to use?',
+            ('resnet50', 'resnet101', 'densenet121', 'shufflenet_v2_x0_5', 'mobilenet_v2'))
+        ""
+        option2 = st.selectbox(
+            'you can select some image',
+            ('image_dog', 'image_snake'))
+
+        file_up = st.sidebar.file_uploader("Upload an image", type="jpg")
+        if file_up is None:
+            if option2 == "image_dog":
+                image = Image.open("./ImageClassificationModel/image/dog.jpg")
+                file_up = "./ImageClassificationModel/image/dog.jpg"
+            else:
+                image = Image.open("./ImageClassificationModel/image/snake.jpg")
+                file_up = "./ImageClassificationModel/image/snake.jpg"
+            st.image(image, caption='Uploaded Image.', use_column_width=True)
+            st.write("")
+            st.write("Just a second...")
+            labels, fps = predict(file_up, option)
+
+            # print out the top 5 prediction labels with scores
+            st.success('successful prediction')
+            st.write("前五名预测类别及概率如下：")
+            for i in labels:
+                st.write("Prediction (index, name)", i[0], ",   Score: ", i[1])
+
+            # print(t2-t1)
+            # st.write(float(t2-t1))
+            # st.write("")
+            # st.metric("", "FPS:   " + str(fps))
+
+        else:
+            image = Image.open(file_up)
+            st.image(image, caption='Uploaded Image.', use_column_width=True)
+            st.write("")
+            st.write("Just a second...")
+            labels, fps = predict(file_up, option)
+
+            # print out the top 5 prediction labels with scores
+            st.success('successful prediction')
+            st.write("前五名预测类别及概率如下：")
+            for i in labels:
+                st.write("Prediction (index, name)", i[0], ",   Score: ", i[1])
+
+            # print(t2-t1)
+            # st.write(float(t2-t1))
+            # st.write("")
+            # st.metric("", "FPS:   " + str(fps))
+
     ######################################################################
     if is_valid:
         print('valid')

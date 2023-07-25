@@ -7,6 +7,9 @@ from  main import myMain
 #
 # with open(r'D:\lvshaomei\modelDeploy\yolov5-streamlit-main\yolov5-streamlit-main\config.yaml') as file:
 #     config = yaml.load(file, Loader=SafeLoader)
+
+st.set_page_config(page_title="模型部署", page_icon="🎈", layout="wide")
+
 # 如下代码数据，可以来自数据库
 names = ['吕少梅', '管理员']
 usernames = ['lvshaomei', 'admin']

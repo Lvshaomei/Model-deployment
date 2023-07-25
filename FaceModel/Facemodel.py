@@ -49,7 +49,7 @@ def predict(file1,file2):
     # model.to(device)
     # cur_winw = os.path.abspath(__file__)
     # cur_winw = os.path.split(cur_winw)[0]
-    model.load_state_dict(torch.load("D:/lvshaomei/modelDeploy/yolov5-streamlit-main/yolov5-streamlit-main/FaceModel/77auc_88.113%.pkl", map_location=torch.device('cpu')))
+    model.load_state_dict(torch.load("./FaceModel/77auc_88.113%.pkl", map_location=torch.device('cpu')))
     img1 = change_size(file1)
     img2 = change_size(file2)
     img1 = cv.cvtColor(img1,cv.COLOR_BGR2RGB)
