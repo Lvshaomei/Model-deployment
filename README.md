@@ -6,7 +6,7 @@
 
 # demo演示
 
-[video(video-EeQQgKYm-1690382896211)(type-csdn)(url-https://live.csdn.net/v/embed/314987)(image-https://video-community.csdnimg.cn/vod-84deb4/70703b702bc171eebff37035d0b20102/snapshots/3f7b5a63871f461e914a0b5f827b7f58-00005.jpg?auth_key=4843982050-0-0-f5162d684ba0c9f88ee39b03e30de32a)(title-演示demo2)]
+![演示demo](./Page_data/演示demo2.mp4)
 
 # 安装依赖
 
@@ -18,26 +18,29 @@
 
 `streamlit run login.py`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/cd10f5fa921447bba9c52493dc3ab76f.png#pic_center)
+![用户信息](./Page_data/users.png)
 
 
 根据用户名和密码登录，然后进入主页面。
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7b8db965b8d4489b88135411a410ef09.png#pic_center)
+![登录](./Page_data/login.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/83ef7a46c6314df1b67e3f83ff43848e.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5ad13cb5d62f483ba124dd24b938e97c.png#pic_center)
+![首页](./Page_data/index.png)
+
+![功能](./Page_data/function.png)
+
 # 功能介绍
 ## a. 图片检测
-![在这里插入图片描述](https://img-blog.csdnimg.cn/05ea22aec96e460a989d894b04e0e69e.png#pic_center)
+![图片检测](./Page_data/Image detection.png)
 
 ## b. 视频检测
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5bc0dc6bd87f446cafb16ed7d0ca0dc8.png#pic_center)
+![视频检测](./Page_data/video detection.png)
 ## c. 人脸识别
 
 由于人脸识别功能是自己写自己训练得到的，所以下面将对代码进行详细介绍。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9d434bb3887a4ca0a592823461aabe1d.png#pic_center)
+![人脸识别](./Page_data/face recognition.png)
+
 ### 1. 训练模型数据集
 
 ```
@@ -78,7 +81,7 @@ CeleA_and_CASIA_save_path为CeleA数据集完成编号后保存人脸图片的�
 
 第一阶段是使用一种叫做`PNet`(Proposal Network)的卷积神经网络，获得候选窗体和边界回归向量。同时，候选窗体根据边界框进行校准。然后利用非极大值抑制去除重叠窗体。第二阶段是使用`R-Net`(Refine Network)卷积神经网络进行操作，将经过`P-Net`确定的包含候选窗体的图片在`R-Net`中训练，最后使用全连接网络进行分类。利用边界框向量微调候选窗体，最后还是利用非极大值抑制算法去除重叠窗体。第三阶段，使用`Onet`(Output Network)卷积神经网络进行操作，该网络比`R-Net`多一层卷积层，功能与`R-Net`类似。网络结构图如下。
 
-![img](https://img-blog.csdnimg.cn/img_convert/e3905b5db39a79fbd3e44e518bf6d3a2.jpeg)
+![img](./Page_data/MTCNN.jpg)
 
 ### 3. 模型处理
 
@@ -130,7 +133,7 @@ criterion = torch.nn.BCEWithLogitsLoss() # 交叉熵损失函数
 
 通俗的来说**`SENet`的核心思想在于通过网络根据loss去学习特征权重，使得有效的feature map权重大，无效或效果小的feature map权重小的方式训练模型达到更好的结果**。`SENet-154`的构建是将`SE`块合并到`64×4d ResNeXt-152`的修改版本中，该版本采用`ResNet-152`的块堆叠策略，扩展了原来的`ResNeXt-101`。`SE`结构图如下。
 
-![img](https://img-blog.csdn.net/20180423230918755)
+![img](./Page_data/模型原理.jpg)
 
 `SENET-154`与`SE`存在的其他差异如下：
 
@@ -141,7 +144,7 @@ criterion = torch.nn.BCEWithLogitsLoss() # 交叉熵损失函数
 
 ## d. 图片分类
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d409107433c14060b461de135ee2b0cd.png#pic_center)
+![图片分类](./Page_data/Picture classification.png)
 
 
 # 参考链接
