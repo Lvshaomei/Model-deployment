@@ -6,7 +6,7 @@
 
 # demo演示
 
-![演示demo](./Page_data/演示demo2.mp4)
+![演示demo](./Page_data/demo.mp4)
 
 # 安装依赖
 
@@ -32,14 +32,14 @@
 
 # 功能介绍
 ## a. 图片检测
-![图片检测](./Page_data/Image detection.png)
+![图片检测](./Page_data/Image_detection.png)
 
 ## b. 视频检测
-![视频检测](./Page_data/video detection.png)
+![视频检测](./Page_data/video_detection.png)
 ## c. 人脸识别
 
 由于人脸识别功能是自己写自己训练得到的，所以下面将对代码进行详细介绍。
-![人脸识别](./Page_data/face recognition.png)
+![人脸识别](./Page_data/face_recognition.png)
 
 ### 1. 训练模型数据集
 
