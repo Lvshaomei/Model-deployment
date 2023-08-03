@@ -6,7 +6,7 @@
 
 # demo演示
 
-![演示demo](./Page_data/demo.mp4)
+<video src="./Page_data/demo.mp4"></video>
 
 # 安装依赖
 
