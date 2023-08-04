@@ -7,15 +7,7 @@
 # demo演示
 
 <video src="./Page_data/demo.mp4"></video>
-
-
-[video(video-RB72LWjG-1691125974572)(type-undefined)(url-undefined)(image-https://img-blog.csdnimg.cn/editor-video.png)(title-undefined)]
-
-
-
-[video(video-V13rvJQ6-1691047199053)(type-csdn)(url-https://live.csdn.net/v/embed/314987)(image-https://video-community.csdnimg.cn/vod-84deb4/70703b702bc171eebff37035d0b20102/snapshots/3f7b5a63871f461e914a0b5f827b7f58-00005.jpg?auth_key=4843982050-0-0-f5162d684ba0c9f88ee39b03e30de32a)(title-演示demo2)]
-
-
+https://live.csdn.net/v/314987?spm=1001.2014.3001.5501
 
 # 安装依赖
 
