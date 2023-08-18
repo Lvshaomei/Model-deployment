@@ -114,3 +114,5 @@ scikit-learn
 albumentations
 
 streamlit_authenticator
+opencv-python-headless
+
