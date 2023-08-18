@@ -114,3 +114,4 @@ sklearn
 albumentations
 
 streamlit_authenticator
+cv2
