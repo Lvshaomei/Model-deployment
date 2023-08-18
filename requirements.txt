@@ -1,5 +1,4 @@
 # pip install -r requirements.txt
-
 streamlit
 
 # base ----------------------------------------
@@ -113,4 +112,3 @@ tzlocal==4.2
 natsort
 sklearn
 albumentations
-PIL
