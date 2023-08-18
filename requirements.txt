@@ -112,3 +112,5 @@ tzlocal==4.2
 natsort
 sklearn
 albumentations
+
+streamlit_authenticator
